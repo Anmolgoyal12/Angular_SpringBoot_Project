@@ -5,13 +5,16 @@ import com.student.demo.entities.StudentEntity;
 import com.student.demo.repositories.StudentRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
 final StudentRepository studentrepository;
+
 final ModelMapper modelMapper;
 public  StudentService(StudentRepository studentrepository, ModelMapper modelMapper){
         this.studentrepository=studentrepository;
@@ -48,12 +51,17 @@ StudentEntity studentEntity=modelMapper.map(studentDTO,StudentEntity.class);
 
             return null;
         }
-
         StudentEntity existingStudentEntity = studentrepository.getById(id);
         existingStudentEntity.setName(studentDTO.getName());
-        existingStudentEntity.setDateOfJoining(studentDTO.getDateOfJoining());
-        existingStudentEntity.setActive(studentDTO.isActive());
+        existingStudentEntity.setAge(studentDTO.getAge());
+        existingStudentEntity.setGender(studentDTO.getGender());
+        existingStudentEntity.setCourse(studentDTO.getCourse());
+        existingStudentEntity.setSemester(studentDTO.getSemester());
+        existingStudentEntity.setStream(studentDTO.getStream());
+        existingStudentEntity.setPhoto(studentDTO.getPhoto());
 
         return modelMapper.map(studentrepository.save(existingStudentEntity), StudentDTO.class);
     }
+
+
 }

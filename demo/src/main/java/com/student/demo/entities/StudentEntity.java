@@ -16,9 +16,15 @@ public class StudentEntity {
    @Id
    @GeneratedValue(strategy= GenerationType.AUTO)
 
-    private Long id;
+   private Long id;
     private String name;
-    private LocalDate dateOfJoining;
+    private Double age;
+    private String gender;
+    private String course;
+    private Integer semester;
+    private String stream;
 
-    private boolean isActive;
+    @Lob
+    @Column(name = "photo", columnDefinition = "BLOB")
+    private byte[] photo;
 }
