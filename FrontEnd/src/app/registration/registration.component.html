@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Student Registration</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Importing Google Fonts for the project */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playwrite+CU:wght@100..400&display=swap');
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="form-box">
+    <!-- Registration Form Section -->
+    <form id="registrationForm" onsubmit="validateForm(event)">
+      <div class="logo">Registration <span>Form</span></div>
+
+      <!-- Name Input -->
+      <div class="input-box">
+        <input type="text" id="name" name="name" placeholder="Enter Your Name">
+        <label for="name">Name</label>
+        <div class="invalid-feedback" id="nameError"></div>
+      </div>
+
+      <!-- Age Input -->
+      <div class="input-box">
+        <input type="number" placeholder="Enter Your Age">
+        <label>Age</label>
+      </div>
+
+      <!-- Gender Selection -->
+      <div class="input-box">
+        <div class="radio-group">
+          <span style="margin-left: 1px;">
+            <input type="radio" id="gender-male" name="gender" value="male">
+            <label for="gender-male">Male</label>
+          </span>
+          <span style="margin-left: 25px;">
+            <input type="radio" id="gender-female" name="gender" value="female">
+            <label for="gender-female">Female</label>
+          </span>
+          <span style="margin-left: 25px;">
+            <input type="radio" id="gender-other" name="gender" value="other">
+            <label for="gender-other">Other</label>
+          </span>
+        </div>
+        <label>Gender</label>
+      </div>
+
+      <!-- Roll Number Input -->
+      <div class="input-box">
+        <input type="text" placeholder="Enter Roll Number">
+        <label>Roll Number</label>
+      </div>
+
+      <!-- Course Selection -->
+      <div class="input-box">
+        <select id="courseSelect" onchange="populateStreams()">
+          <option value="" disabled selected>Choose Your Course</option>
+          <option value="BA">Bachelor of Arts</option>
+          <option value="BSc">Bachelor of Science</option>
+          <option value="BCom">Bachelor of Commerce</option>
+          <option value="BTech">Bachelor of Technology</option>
+          <option value="BBA">Bachelor of Business Administration</option>
+          <option value="BCA">Bachelor of Computer Applications</option>
+          <option value="LLB">Bachelor of Law</option>
+        </select>
+        <label>Course</label>
+      </div>
+
+      <!-- Stream Selection -->
+      <div class="input-box" id="streamBox" style="display:none;">
+        <select id="streamSelect">
+          <option value="" disabled selected>Choose Your Stream</option>
+        </select>
+        <label>Stream</label>
+      </div>
+
+      <!-- Semester Selection -->
+      <div class="input-box">
+        <select>
+          <option value="" disabled selected>Choose Your Semester</option>
+          <option value="sem1">Semester 1</option>
+          <option value="sem2">Semester 2</option>
+          <option value="sem3">Semester 3</option>
+          <option value="sem4">Semester 4</option>
+          <option value="sem5">Semester 5</option>
+          <option value="sem6">Semester 6</option>
+        </select>
+        <label>Semester</label>
+      </div>
+
+      <!-- Student Photo Upload -->
+      <div class="input-box">
+        <label for="student-photo">Student Photo</label>
+        <input type="file" id="student-photo">
+      </div>
+
+      <!-- Additional Document Upload -->
+      <div class="input-box">
+        <label for="additional-doc">Additional Document</label>
+        <input type="file" id="additional-doc">
+      </div>
+
+      <!-- Submit Button -->
+      <button class="btn" (click)="openRegister()">Submit</button>
+      <button class="btn" (click)="openLogin()">Teacher's LogIn</button>
+    </form>
+  </div>
+</div>
+
+<!-- Javascript conditions to control course and stream field -->
+<script>
+  function populateStreams() {
+    var courseSelect = document.getElementById("courseSelect");
+    var streamBox = document.getElementById("streamBox");
+    var streamSelect = document.getElementById("streamSelect");
+
+    streamSelect.innerHTML = '<option value="" disabled selected>Choose Your Stream</option>';
+
+    var selectedCourse = courseSelect.value;
+
+    // streams for elected course
+    if (selectedCourse === "BA") {
+      streamSelect.innerHTML += `
+        <option value="English">English</option>
+        <option value="History">History</option>
+        <option value="Political Science">Political Science</option>
+        <option value="Economics">Economics</option>
+        <option value="Sociology">Sociology</option>
+        <option value="Psychology">Psychology</option>
+        <option value="Geography">Geography</option>
+        <option value="Philosophy">Philosophy</option>
+        <option value="Fine Arts">Fine Arts</option>
+        <option value="Languages">Languages</option>
+      `;
+    } else if (selectedCourse === "BSc") {
+      streamSelect.innerHTML += `
+        <option value="Physics">Physics</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Biology">Biology</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Statistics">Statistics</option>
+        <option value="Zoology">Zoology</option>
+        <option value="Botany">Botany</option>
+        <option value="Environmental Science">Environmental Science</option>
+      `;
+    } else if (selectedCourse === "BCom") {
+      streamSelect.innerHTML += `
+        <option value="General">General</option>
+        <option value="Accountancy">Accountancy</option>
+        <option value="Finance">Finance</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Economics">Economics</option>
+        <option value="Management">Management</option>
+        <option value="Taxation">Taxation</option>
+        <option value="Banking">Banking</option>
+        <option value="Insurance">Insurance</option>
+      `;
+    } else if (selectedCourse === "BTech") {
+      streamSelect.innerHTML += `
+        <option value="Computer Engineering">Computer Engineering</option>
+        <option value="Electrical Engineering">Electrical Engineering</option>
+        <option value="Mechanical Engineering">Mechanical Engineering</option>
+        <option value="Civil Engineering">Civil Engineering</option>
+        <option value="Electronics & Communication">Electronics & Communication</option>
+        <option value="Information Technology">Information Technology</option>
+        <option value="Aeronautical Engineering">Aeronautical Engineering</option>
+        <option value="Biotechnology">Biotechnology</option>
+        <option value="Chemical Engineering">Chemical Engineering</option>
+      `;
+    } else if (selectedCourse === "BBA") {
+      streamSelect.innerHTML += `
+        <option value="General">General</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Finance">Finance</option>
+        <option value="Human Resource Management">Human Resource Management</option>
+        <option value="International Business">International Business</option>
+        <option value="Operations Management">Operations Management</option>
+        <option value="Entrepreneurship">Entrepreneurship</option>
+        <option value="Retail Management">Retail Management</option>
+      `;
+    } else if (selectedCourse === "BCA") {
+      streamSelect.innerHTML += `
+        <option value="General">General</option>
+        <option value="Computer Applications">Computer Applications</option>
+        <option value="Cloud Computing">Cloud Computing</option>
+        <option value="Mobile Applications">Mobile Applications</option>
+        <option value="Web Development">Web Development</option>
+        <option value="Database Management">Database Management</option>
+        <option value="Networking">Networking</option>
+        <option value="Cyber Security">Cyber Security</option>
+        <option value="Software Testing">Software Testing</option>
+      `;
+    } else if (selectedCourse === "LLB") {
+      streamSelect.innerHTML += `
+        <option value="General">General</option>
+        <option value="Corporate Law">Corporate Law</option>
+        <option value="Criminal Law">Criminal Law</option>
+        <option value="Constitutional Law">Constitutional Law</option>
+        <option value="Family Law">Family Law</option>
+        <option value="Intellectual Property Law">Intellectual Property Law</option>
+        <option value="Labour Law">Labour Law</option>
+        <option value="Tax Law">Tax Law</option>
+        <option value="Environmental Law">Environmental Law</option>
+      `;
+    }
+    streamBox.style.display = "block";
+  }
+</script>
+</body>
+</html>

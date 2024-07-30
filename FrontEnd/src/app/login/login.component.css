@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  background-image: url('../../assets/login-bg.png');
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2px);
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  margin: 0;
+}
+
+.l-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  width: 360px;
+  padding: 2rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.logo {
+  margin-top: 5px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #333;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.logo span {
+  color: #009988;
+  transition: all 0.3s ease;
+}
+
+.form__div {
+  position: relative;
+  height: 72px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form__input {
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  border: 2px solid #DADCE0;
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 1rem;
+  background: none;
+  z-index: 1;
+  color: #000;
+}
+
+.form__label {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #000;
+  transition: 0.3s;
+}
+
+.form__button {
+  display: block;
+  margin-left: auto;
+  padding: 0.75rem 2rem;
+  outline: none;
+  border: none;
+  background-color: #1A73E8;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form__button:hover {
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .form {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .form__div {
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .form__input {
+    font-size: 0.9rem;
+  }
+
+  .form__label {
+    font-size: 0.9rem;
+  }
+
+  .form__button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+  }
+}

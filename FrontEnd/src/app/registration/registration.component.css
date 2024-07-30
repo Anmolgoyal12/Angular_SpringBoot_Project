@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('../../assets/login-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  margin-top: 10px;
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.logo span {
+  color: #009988;
+  transition: all 0.3s ease;
+}
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.container .input-box {
+  width: 100%;
+  margin: 15px 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  color: #333;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container label {
+  font-size: 14px;
+  margin-bottom: 3px;
+  color: #000;
+}
+
+.container input,
+.container select,
+.container .radio-group {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+.container input[type="file"] {
+  padding: 3px;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+}
+
+.radio-group input[type="radio"] {
+  display: none;
+}
+
+.radio-group label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.radio-group label:before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid #007bff;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.radio-group input[type="radio"]:checked + label:before {
+  background-color: #007bff;
+}
+
+.radio-group input[type="radio"]:disabled + label {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.container button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.container button:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.container .register-link {
+  margin-top: 10px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.container .register-link a {
+  color: #ff9a9a;
+  text-decoration: none;
+}
+
+.container .register-link a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.input-box input[type="file"] {
+  border: none;
+  outline: none;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  padding: 0;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.input-box input[type="file"]:hover {
+  text-decoration: underline;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .btn {
+    width: 80px;
+    height: 35px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .btn {
+    width: 70px;
+    height: 30px;
+    font-size: 12px;
+  }
+}
