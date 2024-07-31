@@ -8,23 +8,43 @@
 <body>
 <!-- Login Form Section-->
 <div class="l-form">
-  <form action="" class="form">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
     <div class="logo">Teacher LogIn <span>Page</span></div>
 
     <!-- Email field-->
     <div class="form__div">
       <label class="form__label">Email</label>
-      <input type="text" class="form__input" placeholder="Enter Email">
+      <input type="text"  id="email" formControlName="email" class="form__input" placeholder="Email">
+   <div *ngIf="email?.invalid &&(email?.dirty||email?.touched||email?.errors)" class="error">
+      <div *ngIf="email?.errors?.['required']" class="rules">Enter  Email Address</div>
+      <div *ngIf="email?.errors?.['email']" class="rules">Enter a  valid Email Address</div>
     </div>
-
+    </div>
     <!-- Password field-->
     <div class="form__div">
       <label class="form__label">Password</label>
-      <input type="password" class="form__input" placeholder="Enter Password">
-    </div>
+      <input type="password" id="password" formControlName="password" class="form__input" placeholder="Password">
+      <div *ngIf="password?.invalid && (password?.dirty || password?.errors||password?.touched)" class="error">
+        <div *ngIf="password?.errors?.['required']" class="rules">Please enter your password.</div>
+        <div *ngIf="password?.errors?.['pattern']" >
+          <ul class="rules">
+          <li>Password must be at least 8 characters long</li>
+          <li>Password must contain at least one uppercase letter</li>
+            <li>One lowercase letter</li>
+            <li>One Number</li>
+        </ul>
 
+
+
+
+        </div>
+
+      </div>
+    </div>
+    <div class="form__div">
     <!-- Submit Button -->
-    <input type="submit" class="form__button" value="LogIn">
+    <input type="submit" class="form__button" value="LogIn" >
+    </div>
   </form>
 </div>
 </body>

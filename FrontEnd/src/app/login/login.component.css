@@ -36,7 +36,9 @@ h1 {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   background: rgba(255, 255, 255, 0.8);
 }
-
+.rules{
+  color:red;
+}
 .logo {
   margin-top: 5px;
   margin-bottom: 25px;
@@ -73,29 +75,47 @@ h1 {
 }
 
 .form__label {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1px;
   font-size: 1rem;
   color: #000;
   transition: 0.3s;
 }
-
 .form__button {
-  display: block;
-  margin-left: auto;
-  padding: 0.75rem 2rem;
+  display: inline-block;
+  margin-left: 6.2em;
+  margin-top:5em; /* Center horizontally and adjust vertical spacing */
+  padding: 0.33rem 1em;
   outline: none;
   border: none;
   background-color: #1A73E8;
   color: #fff;
+
+  width: 7em;
   font-size: 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
   transition: 0.3s;
 }
 
+
+/* Optional: Styling for invalid input */
+input:invalid {
+  border: 2px solid red;
+}
+
+/* Optional: Styling for valid input */
+input:valid {
+  border: 2px solid green;
+}
+
+
 .form__button:hover {
   box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
+  background-color:blueviolet;
+
+
 }
+
 
 @media (max-width: 768px) {
   .form {
@@ -130,8 +150,11 @@ h1 {
     font-size: 0.9rem;
   }
 
-  .form__button {
-    font-size: 0.9rem;
-    padding: 0.5rem 1.5rem;
+  @media (max-width: 600px) {
+    .form__button {
+      margin-top: 6px;
+      margin-left: 5em;
+    }
   }
 }
+
